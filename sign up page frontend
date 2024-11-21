@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login Page</title>
+  <title>Login/Sign-Up</title>
   <style>
     body {
       margin: 0;
@@ -16,7 +16,7 @@
 
     .form-container {
       width: 100%;
-      max-width: 350px;
+      max-width: 400px;
       margin: 100px auto;
       padding: 20px;
       background: rgba(255, 255, 255, 0.8);
@@ -26,13 +26,13 @@
 
     .tabs {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       margin-bottom: 20px;
     }
 
     .tabs button {
       flex: 1;
-      padding: 10px 0;
+      padding: 10px 20px;
       border: none;
       background: lightblue;
       cursor: pointer;
@@ -61,7 +61,7 @@
       border-radius: 5px;
     }
 
-    .login-btn {
+    .signup-btn {
       padding: 10px;
       font-size: 16px;
       background: #FFB6C1;
@@ -72,7 +72,7 @@
       font-weight: bold;
     }
 
-    .login-btn:hover {
+    .signup-btn:hover {
       background: #FF69B4;
     }
   </style>
@@ -80,23 +80,31 @@
 <body>
   <div class="form-container">
     <div class="tabs">
-      <button class="active" onclick="showForm('login')">Login</button>
-      <button onclick="showForm('signup')">Sign Up</button>
+      <button class="active">Login</button>
+      <button>Sign Up</button>
     </div>
-    <form id="login-form">
+    <form id="signup-form">
       <label for="username">Username *</label>
-      <input type="text" id="username" placeholder="guest@example.com" required>
+      <input type="email" id="username" placeholder="guest@example.com" required>
+      
+      <label for="email">E-mail *</label>
+      <input type="email" id="email" placeholder="guest@example.com" required>
       
       <label for="password">Password *</label>
       <input type="password" id="password" required>
       
-      <button type="submit" class="login-btn">Login</button>
+      <label for="confirm-password">Confirm Password *</label>
+      <input type="password" id="confirm-password" required>
+      
+      <button type="submit" class="signup-btn">Sign Up</button>
     </form>
   </div>
-
-  <script>
-    function showForm(formType) {
-      alert(formType + ' form will be shown here.');
-    }
-  </script>
+</body>
 </html>
+
+      
+    
+      
+
+
+  
