@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat App</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://via.placeholder.com/1500x1000'); /* Replace with your emoji background */
+      background-size: cover;
+      font-family: Arial, sans-serif;
+    }
+
+    .chat-container {
+      display: flex;
+      height: 100vh;
+      width: 100%;
+    }
+
+    /* Sidebar styling */
+    .sidebar {
+      width: 25%;
+      background-color: #FFE4E1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .chat-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .chat-item {
+      padding: 15px;
+      margin-bottom: 10px;
+      background: #FFB6C1;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .chat-item.active {
+      background: #FF69B4;
+    }
+
+    .chat-item:hover {
+      background: #FF87A6;
+    }
+
+    /* Chatbox styling */
+    .chatbox {
+      flex: 1;
+      background-color: #F0F8FF;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .chat-header {
+      padding: 20px;
+      background-color: #87CEEB;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .message {
+      margin-bottom: 15px;
+      padding: 10px;
+      border-radius: 8px;
+      max-width: 70%;
+    }
+
+    .message.sent {
+      background: #ADD8E6;
+      margin-left: auto;
+    }
+
+    .message.received {
+      background: #FFDAB9;
+    }
+
+    .input-box {
+      display: flex;
+      padding: 10px;
+      background-color: #E6E6FA;
+    }
+
+    .input-box input {
+      flex: 1;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .input-box button {
+      padding: 10px 20px;
+      margin-left: 10px;
+      background: #FFB6C1;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+    }
+
+    .input-box button:hover {
+      background: #FF69B4;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div style="margin-bottom: 20px;">
+        <button style="padding: 10px 15px; background: #FF69B4; border: none; color: white; border-radius: 5px;">New Chat +</button>
+      </div>
+      <ul class="chat-list" id="chat-list">
+        <!-- Chat items will be dynamically added -->
+      </ul>
+    </div>
+
+    <!-- Chatbox -->
+    <div class="chatbox">
+      <div class="chat-header" id="chat-header">Select a Chat</div>
+      <div class="messages" id="messages">
+        <!-- Messages will be dynamically added -->
+      </div>
+      <div class="input-box">
+        <input type="text" id="message-input" placeholder="Enter a message..." />
+        <button id="send-button">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const chatList = document.getElementById('chat-list');
+    const messages = document.getElementById('messages');
+    const chatHeader = document.getElementById('chat-header');
+    const messageInput = document.getElementById('message-input');
+    const sendButton = document.getElementById('send-button');
+
+    let activeChat = null;
+
+    const chats = [
+      { name: 'John Doe', messages: ['Hey! How’s it going?', 'All good, bro!'] },
+      { name: 'Dohn Joe', messages: ['This chat is working perfectly!'] },
+    ];
+
+    // Render chat list
+    function renderChatList() {
+      chatList.innerHTML = '';
+      chats.forEach((chat, index) => {
+        const chatItem = document.createElement('li');
+        chatItem.className = 'chat-item';
+        chatItem.innerText = chat.name;
+        chatItem.onclick = () => selectChat(index);
+        chatList.appendChild(chatItem);
+      });
+    }
+
+    // Select chat
+    function selectChat(index) {
+      activeChat = chats[index];
+      chatHeader.innerText = activeChat.name;
+      renderMessages();
+    }
+
+    // Render messages
+    function renderMessages() {
+      messages.innerHTML = '';
+      activeChat.messages.forEach((message) => {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'message received';
+        messageDiv.innerText = message;
+        messages.appendChild(messageDiv);
+      });
+    }
+
+    // Send message
+    sendButton.onclick = () => {
+      if (messageInput.value && activeChat) {
+        activeChat.messages.push(messageInput.value);
+        renderMessages();
+        messageInput.value = '';
+      }
+    };
+
+    renderChatList();
+  </script>
+</body>
+</html>
