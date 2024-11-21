@@ -1,0 +1,19 @@
+Run the Application
+1. Install Dependencies:
+
+npm init -y
+npm install express ws
+
+2. Start the Servers:
+
+Open two terminals:
+
+Terminal 1: Start the backend:
+
+
+node server.js
+
+Terminal 2: Open the app in a browser. For example, if using VS Code, launch the Live Server extension or open index.html in a browser.
+
+Open the browser at http://localhost:3000 and start using the app.
+
