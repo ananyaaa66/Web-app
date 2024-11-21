@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-image: url('https://via.placeholder.com/1500x1000'); /* Replace with your emoji background */
+      background-size: cover;
+      background-position: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .form-container {
+      width: 100%;
+      max-width: 350px;
+      margin: 100px auto;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .tabs {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    .tabs button {
+      flex: 1;
+      padding: 10px 0;
+      border: none;
+      background: lightblue;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .tabs button.active {
+      background: #87CEEB;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+
+    input {
+      margin-bottom: 15px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-btn {
+      padding: 10px;
+      font-size: 16px;
+      background: #FFB6C1;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+    }
+
+    .login-btn:hover {
+      background: #FF69B4;
+    }
+  </style>
+</head>
+<body>
+  <div class="form-container">
+    <div class="tabs">
+      <button class="active" onclick="showForm('login')">Login</button>
+      <button onclick="showForm('signup')">Sign Up</button>
+    </div>
+    <form id="login-form">
+      <label for="username">Username *</label>
+      <input type="text" id="username" placeholder="guest@example.com" required>
+      
+      <label for="password">Password *</label>
+      <input type="password" id="password" required>
+      
+      <button type="submit" class="login-btn">Login</button>
+    </form>
+  </div>
+
+  <script>
+    function showForm(formType) {
+      alert(formType + ' form will be shown here.');
+    }
+  </script>
+</html>
